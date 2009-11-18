@@ -1,0 +1,14 @@
+README.txt
+setup.cfg
+setup.py
+collective/__init__.py
+collective.mrwiggin.egg-info/PKG-INFO
+collective.mrwiggin.egg-info/SOURCES.txt
+collective.mrwiggin.egg-info/dependency_links.txt
+collective.mrwiggin.egg-info/entry_points.txt
+collective.mrwiggin.egg-info/namespace_packages.txt
+collective.mrwiggin.egg-info/not-zip-safe
+collective.mrwiggin.egg-info/requires.txt
+collective.mrwiggin.egg-info/top_level.txt
+collective/mrwiggin/__init__.py
+collective/mrwiggin/tests.py

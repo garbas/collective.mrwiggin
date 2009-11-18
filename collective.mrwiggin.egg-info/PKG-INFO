@@ -1,0 +1,25 @@
+Metadata-Version: 1.0
+Name: collective.mrwiggin
+Version: 0.1
+Summary: Ah, yes - it's Mr Wiggin of Ironside and Malone.
+Home-page: http://svn.plone.org/svn/collective/collective.mrwiggin
+Author: Rok Garbas
+Author-email: rok2garbas.si
+License: GPL
+Description: Introduction
+        ============
+        
+        
+        
+        Changelog
+        =========
+        
+        0.1dev (unreleased)
+        -------------------
+        
+        - Initial release
+        
+Keywords: plone portlets
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
