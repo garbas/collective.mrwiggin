@@ -1,7 +1,43 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.mrwiggin">
 
+    <!-- Namespace traversal adapters for various types of portlets -->
+    <adapter
+        factory=".traversal.BlockNamespace"
+        name="block"
+        />
+
+    <!-- Portlet management pages -->
+    <browser:page
+        for="plone.portlets.interfaces.ILocalPortletAssignable"
+        class=".manage_layout.ManageLayout"
+        name="manage-layout"
+        template="manage-layout.pt"
+        permission="plone.app.portlets.ManageOwnPortlets"
+        />
+
+
+
+
+
+
+
+
+    <!-- Make a special renderer for the columns so we can control them
+         with a template
+         I THINK THIS IS NOT NEEDED
+    <adapter 
+      factory=".manager.ContentPortletsManagerRenderer"
+      provides="plone.portlets.interfaces.IPortletManagerRenderer"
+      /-->
+
+    <!-- Renderer for the columns in edit mode 
+         I THINK THIS IS NOT NEEDED
+    <adapter
+        factory=".editmanager.ContentPortletsEditManagerRenderer"
+        provides="plone.portlets.interfaces.IPortletManagerRenderer"
+        /-->
 
 </configure>

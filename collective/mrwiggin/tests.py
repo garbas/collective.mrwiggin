@@ -10,7 +10,7 @@ from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import PloneSite
 ptc.setupPloneSite()
 
-import collective.mrwiggin
+import collective.contentportlets
 
 class TestCase(ptc.PloneTestCase):
     class layer(PloneSite):
@@ -18,7 +18,7 @@ class TestCase(ptc.PloneTestCase):
         def setUp(cls):
             fiveconfigure.debug_mode = True
             zcml.load_config('configure.zcml',
-                             collective.mrwiggin)
+                             collective.contentportlets)
             fiveconfigure.debug_mode = False
 
         @classmethod
@@ -31,21 +31,21 @@ def test_suite():
 
         # Unit tests
         #doctestunit.DocFileSuite(
-        #    'README.txt', package='collective.mrwiggin',
+        #    'README.txt', package='collective.contentportlets',
         #    setUp=testing.setUp, tearDown=testing.tearDown),
 
         #doctestunit.DocTestSuite(
-        #    module='collective.mrwiggin.mymodule',
+        #    module='collective.contentportlets.mymodule',
         #    setUp=testing.setUp, tearDown=testing.tearDown),
 
 
         # Integration tests that use PloneTestCase
         #ztc.ZopeDocFileSuite(
-        #    'README.txt', package='collective.mrwiggin',
+        #    'README.txt', package='collective.contentportlets',
         #    test_class=TestCase),
 
         #ztc.FunctionalDocFileSuite(
-        #    'browser.txt', package='collective.mrwiggin',
+        #    'browser.txt', package='collective.contentportlets',
         #    test_class=TestCase),
 
         ])

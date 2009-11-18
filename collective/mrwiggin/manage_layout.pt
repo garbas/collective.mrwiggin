@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xml:lang="en" lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="collective.contentportlets">
+
+<head>
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+    <div metal:fill-slot="javascript_head_slot" tal:omit-tag="">
+        <link type="text/css" rel="kinetic-stylesheet"
+            tal:attributes="href string:${context/absolute_url}/++resource++manage-portlets.kss"/>
+    </div>
+</head>
+
+<body>
+
+<div metal:fill-slot="main" tal:define="ploneview context/@@plone">
+
+  <!--h1 class="documentFirstHeading"
+      i18n:translate="title_manage_contextual_portlets">
+      <img i18n:name="context_icon" tal:replace="structure python:ploneview.getIcon(context).html_tag()" />
+      Manage portlets for
+      "<span i18n:name="context_title" tal:content="context/Title" />"
+  </h1>
+
+  <a href=""
+       class="link-parent"
+       tal:attributes="href string:${context/absolute_url}"
+       i18n:translate="return_to_view">
+    Return
+  </a>
+
+  <p i18n:translate="description_manage_contentportlets">
+    The portlet columns  will now display only those portlets
+    explicitly assigned in this context. Use the buttons on each portlet 
+    to move them up or down, delete or edit them. To add a new portlet,
+    use the drop-down list at the top of the column.
+  </p>
+
+  <p i18n:translate="description_portlets_block_unblock">
+      If you wish to block or unblock certain categories of portlets, you can 
+      do so using the drop-down boxes.
+  </p-->
+
+  <strong>TODO: load manager panel for our display view</strong>
+  <!--div id="dashboard">
+      <div id="dashboard-portlets1" 
+        tal:content="structure provider:plone.dashboard1" />
+      <div id="dashboard-portlets2" 
+        tal:content="structure provider:plone.dashboard2" />
+      <div id="dashboard-portlets3" 
+        tal:content="structure provider:plone.dashboard3" />
+      <div id="dashboard-portlets4" 
+        tal:content="structure provider:plone.dashboard4" />
+  </div-->
+
+</div>
+
+</body>
+</html>
