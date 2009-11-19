@@ -13,7 +13,7 @@ class ManageLayout(BrowserView):
     """
     """
 
-    implements(IManageContentPortletsView)
+    implements(IManageLayoutView)
     
     def __init__(self, context, request):
         super(ManageContentPortlets, self).__init__(context, request)
@@ -31,17 +31,20 @@ class ManageLayout(BrowserView):
         
     @property
     def key(self):
-        #TODO: add also Display view name
-        return '/'.join(self.context.getPhysicalPath())
+        return ('/'.join(self.context.getPhysicalPath()))+self.display()
     
     def getAssignmentMappingUrl(self, manager):
         baseUrl = str(getMultiAdapter((self.context, self.request), name='absolute_url'))
-        return '%s/++contentportlets++%s' % (baseUrl, manager.__name__)
-        #return '%s/++contentportlets++%s+%s' % (baseUrl, manager.__name__, layoutId)
+        return '%s/++block++%s' % (baseUrl, manager.__name__)
+        #return '%s/++block++%s+%s' % (baseUrl, manager.__name__, layoutId)
     
     def getAssignmentsForManager(self, manager):
         # TODO: look into what this does
         assignments = getMultiAdapter((self.context, manager), IPortletAssignmentMapping)
         return assignments.values()
+
+    def display(self):
+        _context = self.context.get(self.context.getDefaultPage(), self.context)
+        return _context.getLayout()
 
 

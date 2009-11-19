@@ -3,6 +3,8 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.mrwiggin">
 
+    <include package="plone.app.portlets" />
+
     <!-- Namespace traversal adapters for various types of portlets -->
     <adapter
         factory=".traversal.BlockNamespace"
@@ -13,8 +15,8 @@
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"
         class=".manage_layout.ManageLayout"
-        name="manage-layout"
-        template="manage-layout.pt"
+        name="manage_layout"
+        template="manage_layout.pt"
         permission="plone.app.portlets.ManageOwnPortlets"
         />
 

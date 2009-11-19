@@ -23,7 +23,6 @@ setup(name='collective.mrwiggin',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'plone.app.portlets',
       ],
       entry_points="""
       # -*- Entry points: -*-

@@ -9,7 +9,7 @@ from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletAssignmentMapping
 
 
-class MrWigginNamespace(object):
+class BlockNamespace(object):
     """
     """
 
