@@ -1,0 +1,24 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:wiggin="http://namespaces.plone.org/wiggin"
+    i18n_domain="uca.theme">
+
+  <include package="collective.mrwiggin" />
+  
+  <!-- EXAMPLE LAYOUT -->
+  <wiggin:layout
+    name = "test_layout"
+    class = ".layout.TestLayout"
+
+    for = "*"
+    template = ""
+    permission="zope2.View"
+    title = "Test Layout"
+    description = "Test Layout to show basic functionality."
+
+    main_template = ""
+    main_class = ""
+
+    />
+
+</configure>
