@@ -75,7 +75,7 @@ def LayoutDirective(_context, name, class_,
                         layer = IDefaultBrowserLayer,
                         permission = u"zope2.View",
                         title = None,
-                        description = u''
+                        description = u'',
                         icon = None):
 
     # calculate defualt values
