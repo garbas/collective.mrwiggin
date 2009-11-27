@@ -21,7 +21,7 @@ class ILayout(zope.interface.Interface):
         required        = True,
         )
    
-    class_ = configuration_fields.GlobalObject(
+    class_ = zope.configuration.fields.GlobalObject(
         title           = _("Class"),
         description     = _("A class acting as the renderer."),
         required        = True,
