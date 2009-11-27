@@ -15,7 +15,7 @@ from collective.mrwiggin import MessageFactory as _
 class ILayout(zope.interface.Interface):
     """Directive which registers a new layout."""
 
-    name = schema.TextLine(
+    name = zope.schema.TextLine(
         title           = _(u"Name"),
         description     = _(u"A unique name for the layout."),
         required        = True,
