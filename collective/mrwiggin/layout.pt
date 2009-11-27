@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="uca.theme">
+
+<body>
+
+    <metal:body fill-slot="body">
+    <metal:macro define-macro="body">
+
+        <div id="portal-top" i18n:domain="plone">
+            <div tal:replace="structure provider:plone.portaltop" />
+        </div>
+
+        <div class="visualClear" id="clear-space-before-wrapper-table"><!-- --></div>
+
+        <table id="portal-columns">
+            <tbody>
+                <tr>
+
+                    <tal:comment replace="nothing"> Start of the left column </tal:comment>
+                    <td id="portal-column-one"
+                        tal:condition="sl">
+                        <div class="visualPadding">
+                            <tal:block replace="structure provider:plone.leftcolumn" />
+                            &nbsp;
+                        </div>
+                    </td>
+                    <tal:comment replace="nothing"> End of the left column </tal:comment>
+
+                    <tal:comment replace="nothing"> Start of main content block </tal:comment>
+                    <td id="portal-column-content"
+                        tal:define="tabindex python:Iterator(mainSlot=False)">
+
+                        <div tal:define="show_border context/@@plone/showEditableBorder">
+
+                            <div id="region-content"
+                                 class="documentContent">
+
+                                <span id="contentTopLeft"></span>
+                                <span id="contentTopRight"></span>
+                    
+                                <a name="documentContent"></a>
+
+                                <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+                                    Portal status message
+                                </div>
+                
+                                <div id="viewlet-above-content" tal:content="structure provider:plone.abovecontent" />
+
+                                <div id="content">
+                                    <div tal:replace="structure view/template" />
+                                </div>
+
+                                <div tal:replace="structure provider:plone.belowcontent" />
+
+                                <span id="contentBottomLeft"></span>
+                                <span id="contentBottomRight"></span>
+                            </div>
+
+                        </div>
+            
+                    </td>
+                    <tal:comment replace="nothing"> End of main content block </tal:comment>
+
+                    <tal:comment replace="nothing"> Start of right column </tal:comment>
+                    <td id="portal-column-two"
+                        tal:condition="sr">
+                        <div class="visualPadding">
+                            <tal:block replace="structure provider:plone.rightcolumn" />
+                            &nbsp;
+                        </div>
+                    </td>
+                    <tal:comment replace="nothing"> End of the right column </tal:comment>
+
+                </tr>
+            </tbody>
+        </table>
+        <tal:comment replace="nothing"> end column wrapper </tal:comment>
+
+        <div class="visualClear" id="clear-space-before-footer"><!-- --></div>
+      
+        <metal:block i18n:domain="plone">
+            <div tal:replace="structure provider:plone.portalfooter" />
+        </metal:block>
+
+    </metal:macro>
+    </metal:body>
+
+</body>
+</html>

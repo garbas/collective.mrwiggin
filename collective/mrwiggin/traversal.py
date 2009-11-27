@@ -21,7 +21,10 @@ class BlockNamespace(object):
         self.request = request
         
     def traverse(self, name, ignore):
+        
+        #column, layout = name.split('+')
         column = getUtility(IPortletManager, name=name)
-        manager = getMultiAdapter((self.context, column,), IPortletAssignmentMapping)
+        # TODO: layout
+        manager = getMultiAdapter((self.context, column), IPortletAssignmentMapping)
         return manager
 

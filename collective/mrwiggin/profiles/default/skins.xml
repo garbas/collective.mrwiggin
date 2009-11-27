@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+ <object name="collective.mrwiggin"
+    meta_type="Filesystem Directory View"
+    directory="collective.mrwiggin:skins/collective.mrwiggin"/>
+ <skin-path name="Plone Default">
+  <layer name="collective.mrwiggin"
+     insert-after="custom"/>
+ </skin-path>
+</object>

@@ -1,0 +1,106 @@
+<metal:page define-macro="master">
+
+<metal:block define-slot="top_slot" />
+
+<tal:doctype tal:replace="structure string:&lt;!DOCTYPE html PUBLIC
+  &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+  &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;" />
+<metal:block use-macro="here/global_defines/macros/defines" />
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      tal:define="lang language"
+      tal:attributes="lang lang;
+                      xml:lang lang">
+
+<tal:cache tal:define="charset site_properties/default_charset|string:utf-8">
+  <metal:cache use-macro="here/global_cache_settings/macros/cacheheaders">
+    Get the global cache headers located in global_cache_settings.
+  </metal:cache>
+</tal:cache>
+
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
+          tal:define="charset site_properties/default_charset|string:utf-8"
+          tal:attributes="content string:text/html;;charset=${charset}" />
+
+    <meta name="generator" content="Plone - http://plone.org" />
+
+    <!-- Internet Explorer fix, forces IE8 into newest possible rendering
+         engine even if it's on an intranet. This has to be defined before any
+         script/style tags. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+
+    <metal:baseslot define-slot="base">
+      <base tal:attributes="href here/renderBase" /><!--[if lt IE 7]></base><![endif]-->
+    </metal:baseslot>
+
+    <div tal:replace="structure provider:plone.htmlhead" />
+
+    <!-- IE6 workaround CSS/JS  -->
+    <tal:iefixstart replace="structure string:&lt;!--[if lte IE 7]&gt;" />
+        <style type="text/css" media="all" tal:condition="exists: portal/IEFixes.css"
+               tal:content="string:@import url($portal_url/IEFixes.css);">
+        </style>
+        
+        <script type="text/javascript"
+                tal:attributes="src string:${portal_url}/iefixes.js">
+        </script>
+    <tal:iefixend replace="structure string:&lt;![endif]--&gt;" />
+
+    <meta tal:define="metatags python:putils.listMetaTags(here).items()"
+          tal:condition="metatags"
+          tal:repeat="keyval metatags"
+          tal:attributes="name python:keyval[0];
+                          content python:keyval[1];" />
+
+    <link tal:replace="structure provider:plone.htmlhead.links" />
+
+    <!-- Disable IE6 image toolbar -->
+    <meta http-equiv="imagetoolbar" content="no" />
+    
+    <tal:comment replace="nothing"> A slot where you can insert elements in the header from a template </tal:comment>
+    <metal:headslot define-slot="head_slot" />
+
+    <tal:comment replace="nothing"> A slot where you can insert CSS in the header from a template </tal:comment>
+    <metal:styleslot define-slot="style_slot" />
+
+    <tal:comment replace="nothing"> This is deprecated, please use style_slot instead. </tal:comment>
+    <metal:cssslot define-slot="css_slot" />
+
+    <tal:comment replace="nothing"> A slot where you can insert javascript in the header from a template </tal:comment>
+    <metal:javascriptslot define-slot="javascript_head_slot" />
+
+</head>
+
+<body tal:define="template_id python:template.id or path('view/__name__');"
+      tal:attributes="class string:${here/getSectionFromURL} template-${template_id};
+                      dir python:test(isRTL, 'rtl', 'ltr')">
+
+    <div>
+        <a class="managePortletsFallback"
+           tal:attributes="href string:${context/absolute_url}/@@manage-layout">
+            Manage layout
+        </a>
+        <div tal:replace="structure provider:plone.contentviews" />
+    </div>
+
+    <metal:slot metal:define-slot="body">
+        <div id="visual-portal-wrapper">
+            <metal:bodytext metal:define-slot="header" tal:content="nothing">
+                Page content area
+            </metal:bodytext>
+            <metal:bodytext metal:define-slot="main" tal:content="nothing">
+                Page content area
+            </metal:bodytext>
+        </div>
+        <div class="visualClear"><!-- --></div>
+        <div id="kss-spinner"><img tal:attributes="src string:${portal_url}/spinner.gif" alt="" /></div>
+    </metal:slot>
+
+</body>
+
+</html>
+</metal:page>

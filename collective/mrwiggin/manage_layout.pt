@@ -7,8 +7,6 @@
       i18n:domain="collective.contentportlets">
 
 <head>
-    <metal:block fill-slot="top_slot"
-                 tal:define="dummy python:request.set('disable_border',1)" />
     <div metal:fill-slot="javascript_head_slot" tal:omit-tag="">
         <link type="text/css" rel="kinetic-stylesheet"
             tal:attributes="href string:${context/absolute_url}/++resource++manage-portlets.kss"/>
@@ -17,8 +15,14 @@
 
 <body>
 
-<div metal:fill-slot="main" tal:define="ploneview context/@@plone">
-
+<div metal:fill-slot="body">
+<div metal:use-macro="view/layout" />
+<!--tal:define="ploneview context/@@plone">
+  <div tal:condition="not:view/is_layout">
+    This is not Mr. Wiggin's layout!
+  </div>
+  <div tal:condition="view/is_layout"
+       tal:replace="structure provider:${view/current_display_view}" /-->
   <!--h1 class="documentFirstHeading"
       i18n:translate="title_manage_contextual_portlets">
       <img i18n:name="context_icon" tal:replace="structure python:ploneview.getIcon(context).html_tag()" />
@@ -45,7 +49,6 @@
       do so using the drop-down boxes.
   </p-->
 
-  <strong>TODO: load manager panel for our display view</strong>
   <!--div id="dashboard">
       <div id="dashboard-portlets1" 
         tal:content="structure provider:plone.dashboard1" />

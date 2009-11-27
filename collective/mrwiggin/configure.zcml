@@ -1,19 +1,21 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.mrwiggin">
 
     <include package="plone.app.portlets" />
     <include package="collective.autopermission" />
 
-    <include package="collective.mrwiggin" file="meta.zcml" />
 
+    <include package="collective.mrwiggin" file="meta.zcml" />
     <permission
         id="collective.mrwiggin.ManageLayout"
         title="collective.mrwiggin: Manage Layout"
-    />
+        />
 
-    <!-- PLONE PORTLET "MAGIC" -->
+
     <adapter
         factory=".traversal.BlockNamespace"
         name="block"
@@ -21,12 +23,26 @@
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"
         class=".manage_layout.ManageLayout"
-        name="manage_layout"
+        name="manage-layout"
         template="manage_layout.pt"
-        permission="plone.app.portlets.ManageOwnPortlets"
+        permission="plone.app.portlets.ManagePortlets"
+        />
+    <adapter
+        factory=".manage_layout.LayoutEditManager"
+        provides="plone.portlets.interfaces.IPortletManagerRenderer"
         />
 
+   
+    <cmf:registerDirectory
+        name="collective.mrwiggin"/>
 
+    
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.mrwiggin"
+        directory="profiles/default"
+        description="Ah, yes - it's Mr Wiggin of Ironside and Malone."
+        provides="Products.GenericSetup.interfaces.EXTENSION" />
 
 
 
