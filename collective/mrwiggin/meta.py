@@ -43,8 +43,7 @@ class ILayout(zope.interface.Interface):
     permission = zope.schema.TextLine(
         title           = _(u"View permission"),
         description     = _(u"Permission used for viewing the layout."),
-        default         = u"zope2.View"
-        default         = u'',
+        default         = u"zope2.View",
         required        = False,
         )
 
