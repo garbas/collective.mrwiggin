@@ -1,16 +1,31 @@
 
-from Products.Five.browser import BrowserView
+from zope.interface import implements
+from zope.interface import Interface
+from zope.component import adapts
+from zope.component import getMultiAdapter
+from zope.publisher.interfaces.browser import IBrowserView
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+
+from plone.portlets.interfaces import IPortletAssignmentMapping
+from plone.portlets.interfaces import IPortletManager
+from plone.app.portlets.browser.editmanager import EditPortletManagerRenderer
+from plone.app.portlets.manager import DashboardPortletManagerRenderer
+from plone.app.portlets.interfaces import IColumn
+
+from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
+from collective.mrwiggin.interfaces import MRWIGGIN_CATEGORY
+from collective.mrwiggin.interfaces import IManageLayoutView
+from collective.mrwiggin.interfaces import ILayout
 
-class BaseLayout(BrowserView):
-   
-    template = None
-    main_template = ViewPageTemplateFile('layout.pt')
 
-    def __call__(self, *args, **kw):
-        return self.main_template(self, *args, **kw)
 
-    def body_macro(self):
-        pass
+class MainLayout(BrowserView):
+    """Main layout
+    """
+
+    implements(ILayout)
+
+

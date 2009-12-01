@@ -9,9 +9,7 @@ from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletAssignmentMapping
 
 
-class BlockNamespace(object):
-    """
-    """
+class MrWigginNamespace(object):
 
     implements(ITraversable)
     adapts(ILocalPortletAssignable, IHTTPRequest)
@@ -21,10 +19,7 @@ class BlockNamespace(object):
         self.request = request
         
     def traverse(self, name, ignore):
-        
-        #column, layout = name.split('+')
         column = getUtility(IPortletManager, name=name)
-        # TODO: layout
         manager = getMultiAdapter((self.context, column), IPortletAssignmentMapping)
         return manager
 

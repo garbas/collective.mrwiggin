@@ -13,9 +13,12 @@ from plone.app.portlets.manager import DashboardPortletManagerRenderer
 from plone.app.portlets.interfaces import IColumn
 
 from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.CMFCore.utils import getToolByName
 
 from collective.mrwiggin.interfaces import MRWIGGIN_CATEGORY
 from collective.mrwiggin.interfaces import IManageLayoutView
+
 
 
 class ManageLayout(BrowserView):
@@ -49,6 +52,8 @@ class ManageLayout(BrowserView):
         assignments = getMultiAdapter((self.context, manager), IPortletAssignmentMapping)
         return assignments.values()
 
+    # IManageLayoutView implementation
+
     def layout_id(self):
         custom_layout = self.request.get('layout', None)
         if custom_layout:
@@ -65,9 +70,11 @@ class ManageLayout(BrowserView):
         self.template = view.template
         return view.main_template.macros['body']
 
+
 class LayoutEditManager(EditPortletManagerRenderer):
     """Render a portlet manager in edit mode for the dashboard
     """
+    
     adapts(Interface, IDefaultBrowserLayer, IManageLayoutView, IPortletManager)
 
 
