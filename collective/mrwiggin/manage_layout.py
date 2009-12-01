@@ -27,9 +27,6 @@ class ManageLayout(BrowserView):
 
     implements(IManageLayoutView)
     
-    def __init__(self, context, request):
-        super(ManageLayout, self).__init__(context, request)
-        
     # IManagePortletsView implementation
 
     @property
