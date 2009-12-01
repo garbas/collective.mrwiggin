@@ -15,9 +15,14 @@
 
 <body>
 
-<div metal:fill-slot="portal-wrapper">
-    <div metal:use-macro="view/layout" />
-</div>
+  <div metal:fill-slot="portal-layout">
+    <tal:layout condition="view/is_layout">
+      <div metal:use-macro="view/portal_layout" />
+    </tal:layout>
+    <tal:notlayout condition="not:view/is_layout">
+     NOT MR. Wiggin Layout!
+    </tal:notlayout>
+  </div>
 
 </body>
 </html>

@@ -23,8 +23,8 @@
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"
         class=".manage_layout.ManageLayout"
-        name="manage-layout"
-        template="layout.pt"
+        name="manage_layout"
+        template="manage_layout.pt"
         permission="collective.mrwiggin.ManageLayout"
         />
     <browser:page
