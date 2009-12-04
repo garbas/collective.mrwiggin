@@ -29,7 +29,7 @@
         />
     <browser:page
         for="*"
-        class=".layout.MainLayout"
+        class=".layout.Layout"
         name="main_layout"
         template="layout.pt"
         permission="zope2.View"

@@ -8,7 +8,6 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletAssignmentMapping
-from plone.portlets.interfaces import IPortletManager
 from plone.app.portlets.browser.editmanager import EditPortletManagerRenderer
 from plone.app.portlets.manager import DashboardPortletManagerRenderer
 from plone.app.portlets.interfaces import IColumn
@@ -20,6 +19,7 @@ from Products.CMFCore.utils import getToolByName
 from collective.mrwiggin.interfaces import MRWIGGIN_CATEGORY
 from collective.mrwiggin.interfaces import IManageLayoutView
 from collective.mrwiggin.interfaces import ILayout
+from collective.mrwiggin.interfaces import IBlockManager
 
 
 
@@ -82,6 +82,6 @@ class LayoutEditManager(EditPortletManagerRenderer):
     """Render a portlet manager in edit mode for the dashboard
     """
     
-    adapts(Interface, IDefaultBrowserLayer, IManageLayoutView, IPortletManager)
+    adapts(Interface, IDefaultBrowserLayer, IManageLayoutView, IBlockManager)
 
 

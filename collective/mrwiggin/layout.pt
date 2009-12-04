@@ -81,9 +81,11 @@
     <div id="visual-portal-wrapper">
 
 
+      <metal:layout-top metal:define-slot="portal-top">
       <div id="portal-top" i18n:domain="plone">
         <div tal:replace="structure provider:plone.portaltop" />
       </div>
+      </metal:layout-top>
 
       <div class="visualClear" id="clear-space-before-wrapper-table"><!-- --></div>
 
