@@ -16,9 +16,26 @@
         factory=".traversal.MrWigginNamespace"
         name="mrwiggin"
         />
+
     <adapter
-        factory=".manage_layout.LayoutEditManager"
+        factory=".editmanager.LayoutEditManager"
         provides="plone.portlets.interfaces.IPortletManagerRenderer"
+        />
+    <adapter
+        factory=".editmanager.RowEditManager"
+        provides="plone.portlets.interfaces.IPortletManagerRenderer"
+        />
+    
+    <browser:resourceDirectory
+        name="mrwiggin"
+        directory="static"
+        />
+
+    <browser:page
+        for="plone.portlets.interfaces.ILocalPortletAssignable"
+        name="editmanager_macros"
+        template="editmanager_macros.pt"
+        permission="collective.mrwiggin.ManageLayout"
         />
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"

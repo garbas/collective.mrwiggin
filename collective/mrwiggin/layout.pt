@@ -187,7 +187,7 @@
           </a>
       </div>
 
-      <metal:block i18n:domain="plone">
+      <metal:block define-slot="portal-footer" i18n:domain="plone">
 
         <div tal:replace="structure provider:plone.portalfooter" />
 

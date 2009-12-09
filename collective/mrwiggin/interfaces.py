@@ -24,5 +24,3 @@ class IColumn(IBlockManager):
     """Common base class for column portlets.
     """
 
-
-MRWIGGIN_CATEGORY = 'mrwiggin'

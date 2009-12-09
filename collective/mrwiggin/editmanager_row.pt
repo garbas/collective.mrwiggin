@@ -1,0 +1,56 @@
+<div class="portlets-manager mrwiggin mrwiggin_row"
+     xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     tal:attributes="id string:portletmanager-${view/normalized_manager_name};">
+
+  <div metal:use-macro="context/@@editmanager_macros/macros/portlet-add-form" />
+
+  <div class="portletAssignments"
+       i18n:domain="collective.mrwiggin">
+  
+    <div tal:attributes="class string:kssattr-viewname-${view/__parent__/__name__}">
+      <tal:block repeat="portlet view/portlets">
+        <div tal:attributes="class string:managedPortlet portlet kssattr-portlethash-${portlet/hash}">
+          <div class="portletHeader">
+            <span class="managedPortletActions">
+              <a href="#" class="up"
+                 tal:condition="not:repeat/portlet/start"
+                 tal:attributes="href string:${portlet/up_url}&amp;referer=${view/url_quote_referer}">&uarr;</a>
+              <a href="#" class="down"
+                 tal:condition="not:repeat/portlet/end"
+                 tal:attributes="href string:${portlet/down_url}&amp;referer=${view/url_quote_referer}">&darr;</a>
+              <a href="#" class="delete"
+                 tal:attributes="href string:${portlet/delete_url}&amp;referer=${view/url_quote_referer}">&times;</a>
+            </span>
+            <a tal:omit-tag="not:portlet/editview"
+               tal:attributes="href string:${portlet/editview}?referer=${view/url_quote_referer}"
+               tal:content="portlet/title"></a>
+          </div>
+          <div class="portletContent">
+            <div tal:attributes="id string:portletbody-${portlet/hash};">
+              <tal:body replace="structure python:view.safe_render(portlet['renderer'])" />
+            </div>
+          </div>
+        </div>
+      </tal:block>
+    </div>
+
+    <tal:block define="portlets view/inherited_portlets" condition="portlets">
+      <h4 i18n:translate="heading_inherited_portlets">
+        Inherited portlets
+      </h4>
+      
+      <div class="managedPortlet inheritedPortlet" tal:repeat="portlet portlets">
+        <div class="portletHeader">
+          <a tal:omit-tag="not:portlet/editview"
+             tal:attributes="href string:${portlet/editview}/?referer=${view/url_quote_referer}"
+             tal:content="portlet/title" />
+        </div>
+      </div>
+    </tal:block>
+      
+  </div>
+
+</div>

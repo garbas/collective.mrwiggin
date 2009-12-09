@@ -1,0 +1,9 @@
+<div metal:define-macro="portlet-add-form" class="portlet_add" i18n:domain="collective.mrwiggin">
+IMAGE GOES HERE
+  <ul>
+    <li tal:repeat="portlet view/addable_portlets">
+      <a tal:attributes="href string:${view/context_url}${portlet/addview}?referer=${view/referer}"
+         tal:content="portlet/title">Portlet</a>
+    </li>
+  </ul>
+</div>

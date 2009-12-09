@@ -1,0 +1,9 @@
+.mrwiggin_row {
+  width: 100%;
+}
+.mrwiggin_row .portlet_add,
+.mrwiggin_row .portletHeader,
+.mrwiggin_row .managedPortlet {
+  float: left;
+  clear: right;
+}
