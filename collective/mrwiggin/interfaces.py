@@ -1,12 +1,17 @@
 
 from zope.interface import Interface
+from zope.schema import Dict
 from plone.portlets.interfaces import IPortletManager
 from plone.app.portlets.browser.interfaces import IManagePortletsView
 
 
 class ILayout(Interface):
-    """Market interface for layout
-    """
+    """ """
+
+    title = TextLine(title=u"Layout title")
+    description = Text(title=u"Layout description")
+    template = TextLine(title=u"Layout template")
+
 
 class IManageLayoutView(IManagePortletsView):
     """Marker for manage content portlets browser view

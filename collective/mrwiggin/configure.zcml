@@ -1,41 +1,47 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.mrwiggin">
 
     <include package="plone.app.portlets" />
+    <include package="plone.app.registry" />
     <include package="collective.autopermission" />
+    <include package="collective.monkeypatcher" />
 
+
+    <!-- main layout "engine" -->
+    <monkey:patch
+        description="Make main_template a BrowserView class"
+        class="OFS.Traversable.Traversable"
+        original="restrictedTraverse"
+        replacement=".traversable.patched_unrestrictedTraverse"
+        />
+    <browser:page
+        for="*"
+        name="main_template"
+        class=".main_layout.MainLayout"
+        template="main_layout.pt"
+        permission="zope2.View"
+        />
+
+
+    <!-- permissions -->
     <permission
         id="collective.mrwiggin.ManageLayout"
         title="collective.mrwiggin: Manage Layout"
         />
 
-    <adapter
-        factory=".traversal.MrWigginNamespace"
-        name="mrwiggin"
-        />
 
-    <adapter
-        factory=".editmanager.LayoutEditManager"
-        provides="plone.portlets.interfaces.IPortletManagerRenderer"
+    <!-- manage layout interface -->
+    <browser:resource
+        name="mrwiggin.manage_layout.css"
+        file="manage_layout.css"
         />
-    <adapter
-        factory=".editmanager.RowEditManager"
-        provides="plone.portlets.interfaces.IPortletManagerRenderer"
-        />
-    
-    <browser:resourceDirectory
-        name="mrwiggin"
-        directory="static"
-        />
-
-    <browser:page
-        for="plone.portlets.interfaces.ILocalPortletAssignable"
-        name="editmanager_macros"
-        template="editmanager_macros.pt"
-        permission="collective.mrwiggin.ManageLayout"
+    <browser:resource
+        name="mrwiggin.manage_layout.css"
+        file="manage_layout.css"
         />
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"
@@ -44,12 +50,32 @@
         template="manage_layout.pt"
         permission="collective.mrwiggin.ManageLayout"
         />
+
+
+    <!-- portlet managers editors -->
+    <adapter
+        factory=".editmanager.LayoutEditManager"
+        provides="plone.portlets.interfaces.IPortletManagerRenderer"
+        />
+    <adapter
+        factory=".editmanager.RowEditManager"
+        provides="plone.portlets.interfaces.IPortletManagerRenderer"
+        />
     <browser:page
-        for="*"
-        class=".layout.Layout"
-        name="main_layout"
-        template="layout.pt"
-        permission="zope2.View"
+        for="plone.portlets.interfaces.ILocalPortletAssignable"
+        name="editmanager_macros"
+        template="editmanager_macros.pt"
+        permission="collective.mrwiggin.ManageLayout"
+        />
+   
+
+    <genericsetup:registerProfile
+        name="default"
+        directory="profiles/default"
+        title="Mr. Wiggin of Ironside and Malone"
+        description="Good morning, gentlemen..."
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
 </configure>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<registry>
+    <record name="collective.mrwiggin.layouts">
+        <value>
+            <element key="main_layout">collective.mrwiggin:layout.pt</element>
+        </value>
+    </record>
+    <record name="collective.mrwiggin.layout.main_layout">
+        <value>
+            <element key="title">Default Plone Layout</element>
+        </value>
+    </record>
+</registry>

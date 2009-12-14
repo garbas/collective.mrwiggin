@@ -77,7 +77,7 @@
   <body tal:define="template_id python:template.id or path('view/__name__');"
         tal:attributes="class string:${here/getSectionFromURL} template-${template_id};
                         dir python:isRTL and 'rtl' or 'ltr'">
-    <metal:layout metal:define-slot="portal-layout">
+    <metal:layout metal:define-slot="visual-portal-wrapper">
     <div id="visual-portal-wrapper">
 
 
