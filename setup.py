@@ -25,6 +25,8 @@ setup(name='collective.mrwiggin',
           'setuptools',
           'collective.autopermission',
           'plone.app.portlets',
+          'plone.app.registry',
+          'collective.monkeypatcher',
       ],
       entry_points="""
       # -*- Entry points: -*-

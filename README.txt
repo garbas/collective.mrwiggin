@@ -6,7 +6,8 @@ this residential block, and I thought it better that the architects themselves
 demonstrate the particular advantages of their designs. Ah! That's probably the
 first architect now. Erm, Mr. Wiggin of Ironside and Malone.
 
-**Mr. Wiggini(John):** Good morning, gentlemen. This is a model of a 12-storey
+**Mr. Wiggini(John):**
+Good morning, gentlemen. This is a model of a 12-storey
 block combining classical neo-Georgian features with the efficiencies of modern
 techniques. 
 
