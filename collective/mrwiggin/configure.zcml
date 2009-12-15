@@ -39,10 +39,7 @@
         name="mrwiggin.manage_layout.css"
         file="manage_layout.css"
         />
-    <browser:resource
-        name="mrwiggin.manage_layout.css"
-        file="manage_layout.css"
-        />
+
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"
         class=".manage_layout.ManageLayout"
