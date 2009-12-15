@@ -1,13 +1,45 @@
 <?xml version="1.0"?>
 <registry>
+
+    <records interface="collective.mrwiggin.mainlayout" />
+
     <record name="collective.mrwiggin.layouts">
+        <field type="plone.registry.field.Dict">
+            <title>Layouts</title>
+            <key_type type="plone.registry.field.ASCIILine">
+                <title>Key</title>
+            </key_type>
+            <value_type type="plone.registry.field.ASCIILine">
+                <title>Value</title>
+            </value_type>
+        </field>
         <value>
-            <element key="main_layout">collective.mrwiggin:layout.pt</element>
+            <element key="collective.mrwiggin.mainlayout">collective.mrwiggin:main_layout.pt</element>
         </value>
     </record>
-    <record name="collective.mrwiggin.layout.main_layout">
+    <record name="collective.mrwiggin.assigments">
+        <field type="plone.registry.field.Dict">
+            <title>Assigments</title>
+            <key_type type="plone.registry.field.ASCIILine">
+                <title>Key</title>
+            </key_type>
+            <value_type type="plone.registry.field.ASCIILine">
+                <title>Value</title>
+            </value_type>
+        </field>
         <value>
-            <element key="title">Default Plone Layout</element>
+            <element key="/">collective.mrwiggin.mainlayout</element>
         </value>
     </record>
+
+    <record name="collective.mrwiggin.mainlayout.title">
+        <value>Default Plone Layout</value>
+    </record>
+    <record name="collective.mrwiggin.mainlayout.icon">
+        <value>++resource++main_layout_icon.png</value>
+    </record>
+    <record name="collective.mrwiggin.mainlayout.image">
+        <value>++resource++main_layout.png</value>
+    </record>
+
 </registry>

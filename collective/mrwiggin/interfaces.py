@@ -1,5 +1,7 @@
 from zope.interface import Interface
 import zope.schema
+from zope.schema import Text
+from zope.schema import TextLine
 from plone.portlets.interfaces import IPortletManager
 from plone.app.portlets.browser.interfaces import IManagePortletsView
 
@@ -7,9 +9,16 @@ from plone.app.portlets.browser.interfaces import IManagePortletsView
 class ILayout(Interface):
     """ """
 
-    title = zope.schema.TextLine(title=u"Layout title")
-    description = zope.schema.Text(title=u"Layout description")
-    template = zope.schema.TextLine(title=u"Layout template")
+    title = TextLine(title=u"Layout title")
+    description = Text(title=u"Layout description")
+    icon = TextLine(title=u"Layout icon")
+    image = TextLine(title=u"Layout image")
+
+class ILayoutRegistry(Interface):
+    """ """
+
+    layouts = Dict(title=u"Layouts list", default=dict())
+    assigments = Dict(title=u"Layout assigments", default=dict())
 
 
 class IManageLayoutView(IManagePortletsView):
