@@ -2,6 +2,7 @@ from zope.interface import Interface
 import zope.schema
 from zope.schema import Text
 from zope.schema import TextLine
+from zope.schema import Dict
 from plone.portlets.interfaces import IPortletManager
 from plone.app.portlets.browser.interfaces import IManagePortletsView
 
