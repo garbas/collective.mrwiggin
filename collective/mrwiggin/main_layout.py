@@ -1,6 +1,7 @@
 
 import os.path
 
+from zope.interface import alsoProvides, implements
 from zope.component import queryUtility, getMultiAdapter
 from plone.registry.interfaces import IRegistry
 
@@ -10,9 +11,8 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 class MainLayout(BrowserView):
 
-    def __init__(self, context, request):
-        BrowserView.__init__(self, context, request)
-
+    @property
+    def index(self):
         registry = queryUtility(IRegistry)
         if registry:
             layout_name = self.request.get('mrwiggin_layout', None)
@@ -35,11 +35,16 @@ class MainLayout(BrowserView):
             layouts = registry.records.get('collective.mrwiggin.layouts', None)
             if layouts is not None and \
                layout_name is not None and \
+               layout_name != 'collective.mrwiggin.mainlayout' and \
                layout_name in layouts.value.keys():
-                self.index = ViewPageTemplateFile(
+                return ViewPageTemplateFile(
                         self.resolve_layout_path(
                                 layouts.value[layout_name]))
+        return ViewPageTemplateFile('main_layout.pt')
 
+    @property
+    def macros(self):
+        return self.index.macros
 
     def resolve_layout_path(self, name):
         module, path = name.split(':')
@@ -47,3 +52,4 @@ class MainLayout(BrowserView):
                     [os.path.dirname(
                         __import__(module, globals(), locals(), ['']).__file__),] + \
                             path.split('/')))
+

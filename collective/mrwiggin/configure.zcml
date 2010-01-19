@@ -15,14 +15,13 @@
     <monkey:patch
         description="Make main_template a BrowserView class"
         class="OFS.Traversable.Traversable"
-        original="restrictedTraverse"
+        original="unrestrictedTraverse"
         replacement=".traversable.patched_unrestrictedTraverse"
         />
     <browser:page
         for="*"
         name="main_template"
         class=".main_layout.MainLayout"
-        template="main_layout.pt"
         permission="zope2.View"
         />
 
@@ -47,7 +46,6 @@
         for="plone.portlets.interfaces.ILocalPortletAssignable"
         class=".manage_layout.ManageLayout"
         name="manage_layout"
-        template="manage_layout.pt"
         permission="collective.mrwiggin.ManageLayout"
         />
 

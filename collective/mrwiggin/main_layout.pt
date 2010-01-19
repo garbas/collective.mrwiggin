@@ -57,6 +57,15 @@
 
     <link tal:replace="structure provider:plone.htmlhead.links" />
 
+    <tal:manage_layout condition="view/is_manage_layout|nothing">
+        <link type="text/css" rel="kinetic-stylesheet"
+            tal:attributes="href string:${context/absolute_url}/++resource++manage-portlets.kss"/>
+        <style type="text/css" media="all"
+               tal:content="string:@import url(${view/site_url}/++resource++mrwiggin.manage_layout.css);"></style>
+        <script type="text/javascript"
+                tal:attributes="src string:${view/site_url}/++resource++mrwiggin.manage_layout.js"></script>
+    </tal:manage_layout>
+
     <!-- Disable IE6 image toolbar -->
     <meta http-equiv="imagetoolbar" content="no" />
     
@@ -78,6 +87,7 @@
         tal:attributes="class string:${here/getSectionFromURL} template-${template_id};
                         dir python:isRTL and 'rtl' or 'ltr'">
     <metal:layout metal:define-slot="visual-portal-wrapper">
+    SADASDSADADSADSADSASDASD:w
     <div id="visual-portal-wrapper">
 
 

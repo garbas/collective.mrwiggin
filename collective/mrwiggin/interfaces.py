@@ -15,12 +15,6 @@ class ILayout(Interface):
     icon = TextLine(title=u"Layout icon")
     image = TextLine(title=u"Layout image")
 
-class ILayoutRegistry(Interface):
-    """ """
-
-    layouts = Dict(title=u"Layouts list", default=dict())
-    assigments = Dict(title=u"Layout assigments", default=dict())
-
 
 class IManageLayoutView(IManagePortletsView):
     """Marker for manage content portlets browser view

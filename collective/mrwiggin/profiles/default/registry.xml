@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <registry>
 
-    <records interface="collective.mrwiggin.mainlayout" />
 
     <record name="collective.mrwiggin.layouts">
         <field type="plone.registry.field.Dict">
@@ -17,6 +16,7 @@
             <element key="collective.mrwiggin.mainlayout">collective.mrwiggin:main_layout.pt</element>
         </value>
     </record>
+
     <record name="collective.mrwiggin.assigments">
         <field type="plone.registry.field.Dict">
             <title>Assigments</title>
@@ -32,6 +32,7 @@
         </value>
     </record>
 
+    <records interface="collective.mrwiggin.mainlayout" />
     <record name="collective.mrwiggin.mainlayout.title">
         <value>Default Plone Layout</value>
     </record>
