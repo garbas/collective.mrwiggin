@@ -15,4 +15,4 @@ class ManageLayout(MainLayout, ManageContextualPortlets):
         return True
 
     def language(self):
-        
+        pass        
