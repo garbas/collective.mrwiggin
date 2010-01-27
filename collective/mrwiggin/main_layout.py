@@ -10,9 +10,8 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class MainLayout(BrowserView):
-
-    @property
-    def index(self):
+    
+    def get_viewtemplate(self):
         registry = queryUtility(IRegistry)
         if registry:
             layout_name = self.request.get('mrwiggin_layout', None)
@@ -37,14 +36,18 @@ class MainLayout(BrowserView):
                layout_name is not None and \
                layout_name != 'collective.mrwiggin.mainlayout' and \
                layout_name in layouts.value.keys():
-                return ViewPageTemplateFile(
+               return ViewPageTemplateFile(
                         self.resolve_layout_path(
                                 layouts.value[layout_name]))
         return ViewPageTemplateFile('main_layout.pt')
-
+    
+    @property
+    def index(self):
+        self.get_viewtemplate()(self)
+    
     @property
     def macros(self):
-        return self.index.macros
+        return self.get_viewtemplate().macros
 
     def resolve_layout_path(self, name):
         module, path = name.split(':')
