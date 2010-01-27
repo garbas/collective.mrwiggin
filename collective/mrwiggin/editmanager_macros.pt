@@ -1,6 +1,6 @@
 <div metal:define-macro="portlet-add-form" class="portlet_add" i18n:domain="collective.mrwiggin">
   <a href="#">
-    <img tal:attrributes="src string:++resource++mrwiggin.images/.jpg" />
+    <img tal:attributes="src string:++resource++mrwiggin.images/.jpg" />
   </a>
   <ul>
     <li tal:repeat="portlet view/addable_portlets">
