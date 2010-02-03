@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<layers>
+    <layer name="collective.mrwiggin"
+           interface="collective.mrwiggin.interfaces.IMrWigginLayer" />
+</layers>
+
