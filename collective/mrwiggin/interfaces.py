@@ -14,6 +14,8 @@ class ILayout(Interface):
     icon = TextLine(title=u"Layout icon")
     image = TextLine(title=u"Layout image")
 
+class IMrWigginLayer(Interface):
+    """collective mrwiggin layer"""
 
 class IBlockManager(IPortletManager):
     """Common base class for mrwiggin layout portlets.

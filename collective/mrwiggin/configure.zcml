@@ -22,14 +22,21 @@
         name="main_template"
         class=".main_layout.MainLayout"
         permission="zope2.View"
+        layer=".interfaces.IMrWigginLayer"
         />
-
-
 
     <!-- -->
     <browser:resourceDirectory
         name="mrwiggin"
         directory="static"
+        />
+    <browser:page
+        for="plone.portlets.interfaces.ILocalPortletAssignable"
+        name="manage-portlets"
+        class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+        permission="plone.app.portlets.ManagePortlets"
+        template="manage_portlets.pt"
+        layer=".interfaces.IMrWigginLayer"
         />
 
     <!-- portlet managers editors -->
@@ -44,32 +51,12 @@
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"
         name="editmanager_macros"
+        class="plone.app.portlets.browser.manage.ManageContextualPortlets"
         template="editmanager_macros.pt"
         permission="plone.app.portlets.ManagePortlets"
+        layer=".interfaces.IMrWigginLayer"
         />
    
-
-    <!-- Register import and export steps -->
-    <!--adapter
-        factory=".exportimport.PortletsXMLAdapter"
-        name="mrwiggin"
-        />
-    <genericsetup:importStep
-        name="mrwiggin"
-        title="Mr. Wiggin Stuff"
-        description="Import Mr. Wiggin"
-        handler=".exportimport.importPortlets">
-            <depends name="componentregistry"/>
-            <depends name="content"/>
-    </genericsetup:importStep>
-
-    <genericsetup:exportStep
-        name="mrwiggin"
-        title="Mr. Wiggin Stuff"
-        description="Export Mr. Wiggin"
-        handler=".exportimport.exportPortlets"
-        /-->
-
     <genericsetup:registerProfile
         name="default"
         directory="profiles/default"

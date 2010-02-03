@@ -1,27 +1,23 @@
-var timeout    = 500;
-var closetimer = 0;
-var ddmenuitem = 0;
-
-function portlet_menu_open() {
-   portlet_menu_canceltimer();
-   portlet_menu_close();
-   ddmenuitem = jq(this.parentNode).find('ul').css('visibility', 'visible');
-}
-function portlet_menu_close() {
-  if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');
-}
-function portlet_menu_timer() {
-  closetimer = window.setTimeout(portlet_menu_close, timeout);
-}
-function portlet_menu_canceltimer() {
-  if(closetimer) {
-    window.clearTimeout(closetimer);
-    closetimer = null;
-  }
-}
-
+var tmp;
 jq(document).ready(function() {
-  jq('.mrwiggin .portlet_add').bind('mouseover', portlet_menu_open);
-  jq('.mrwiggin .portlet_add').bind('mouseout',  portlet_menu_timer);
+  jq('.mrwiggin').mouseover(function(){
+    tmp = jq(this).find('.portlets_actions');
+    tmp.css('display', 'block');
+  });
+  jq('.mrwiggin').mouseleave(function(){
+    tmp = jq(this).find('.portlets_actions');
+    tmp.css('display', 'none');
+  });
+  jq('.mrwiggin .portlets_actions').mouseleave(function(){
+    this.css('display', 'none');
+  });
+
+  jq('.mrwiggin .button_add>div').click(function(){
+    tmp = jq(this.parentNode).find('ul');
+    if (tmp.css('display') == 'block') {
+      tmp.css('display', 'none');
+    } else {
+      tmp.css('display', 'block');
+    }
+  });
 });
-document.onclick = portlet_menu_close;
