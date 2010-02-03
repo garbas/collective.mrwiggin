@@ -1,3 +1,7 @@
+
+
+
+
 .mrwiggin_row {
   width: 100% !important;
 }
@@ -7,9 +11,6 @@
 .mrwiggin {
   min-height: 1em;
 }
-.mrwiggin:hover {
-  background: #eee;
-}
 .mrwiggin .portlets_actions {
   display: none;
   position: absolute;
@@ -18,6 +19,10 @@
   position:absolute;
   width:100%;
   left:0;
+  font-size: 80%;
+}
+.mrwiggin .portlets_actions div {
+  width: auto;
 }
 .mrwiggin .portlets_actions .portlets_actions_inner {
   margin:0.5em;
@@ -25,9 +30,11 @@
 .mrwiggin .portlets_actions .portlets_actions_inner .section {
   margin-bottom: 1em;
 }
-.mrwiggin .button_add {
+.mrwiggin .buttons {
+  width: auto;
 }
-.mrwiggin .button_add div {
+.mrwiggin .button_close,
+.mrwiggin .buttons .button_add {
   background:#777777;
   border:1px solid #333333;
   display:inline-block;
@@ -38,7 +45,7 @@
   padding:0 10px;
   cursor: pointer;
 }
-.mrwiggin .button_add ul {
+.mrwiggin .buttons ul {
   display: none;
   position: absolute;
   width: 200px;
@@ -46,7 +53,7 @@
   border:1px solid #333333;
   top: 40px;
 }
-.mrwiggin .button_add li a {
+.mrwiggin .buttons li a {
   position: relative;
   display: block;
   color:#000;
@@ -54,8 +61,10 @@
   margin: 0.5em 1em;
 }
 
+
+dl.portlet,
 .managedPortlet {
-  margin:0;
+  margin-bottom:0 !important;
 }
 
 /*.mrwiggin_row .portlet_add,

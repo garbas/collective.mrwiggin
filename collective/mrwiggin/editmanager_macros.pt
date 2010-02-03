@@ -1,8 +1,18 @@
+
+<div metal:define-macro="rendered-portlets" i18n:domain="plone">
+    <tal:block repeat="portlet view/portlets">
+        <tal:block replace="structure python:view.safe_render(portlet['renderer'])" />
+    </tal:block>
+</div>
+
 <div metal:define-macro="portlet-add-form" class="section" i18n:domain="plone">
 
 
-    <div class="button_add">
-        <div i18n:translate="label_add_portlet">Add portlet</div>
+    <div class="buttons">
+        <div class="button_add"
+             i18n:translate="label_add_portlet">Add portlet</div>
+        <div class="button_close"
+             i18n:translate="label_button_close">Close</div>
         <ul>
             <li tal:repeat="portlet view/addable_portlets">
                 <a tal:attributes="href string:${view/context_url}${portlet/addview}?referer=${view/referer}"
@@ -10,6 +20,7 @@
             </li>
         </ul>
     </div>
+
 </div>
 
 <div metal:define-macro="current-portlets-list" class="portletAssignments"

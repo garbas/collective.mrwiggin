@@ -7,6 +7,7 @@ from plone.portlets.interfaces import IPortletRenderer
 from plone.portlets.interfaces import IPortletAssignmentSettings
 from plone.app.portlets.browser.editmanager import ContextualEditPortletManagerRenderer 
 from plone.app.portlets.browser.interfaces import IManageContextualPortletsView
+from plone.memoize.instance import memoize
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
@@ -20,6 +21,10 @@ class LayoutEditManager(ContextualEditPortletManagerRenderer):
     """
     
     template = ViewPageTemplateFile('editmanager.pt')
+
+#    @memoize
+#    def portlets(self):
+#        return super(LayoutEditManager, self).portlets()
 
     def portlets_for_assignments(self, assignments, manager, base_url):
         category = self.__parent__.category

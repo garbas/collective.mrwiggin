@@ -4,10 +4,10 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n">
   
-    <div metal:use-macro="context/@@editmanager_macros/macros/current-portlets-list" />
     <div class="portlets_actions"> 
         <div class="portlets_actions_inner">
             <div metal:use-macro="context/@@editmanager_macros/macros/portlet-add-form" />
+            <div metal:use-macro="context/@@editmanager_macros/macros/current-portlets-list" />
             <div metal:use-macro="context/@@editmanager_macros/macros/blocking-portlets" />
         </div>
     </div>

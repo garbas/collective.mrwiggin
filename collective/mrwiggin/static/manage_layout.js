@@ -12,12 +12,15 @@ jq(document).ready(function() {
     this.css('display', 'none');
   });
 
-  jq('.mrwiggin .button_add>div').click(function(){
+  jq('.mrwiggin .button_add').click(function(){
     tmp = jq(this.parentNode).find('ul');
     if (tmp.css('display') == 'block') {
       tmp.css('display', 'none');
     } else {
       tmp.css('display', 'block');
     }
+  });
+  jq('.mrwiggin .button_close').click(function(){
+    jq(this.parentNode.parentNode.parentNode.parentNode).css('display', 'none');
   });
 });
