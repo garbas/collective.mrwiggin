@@ -7,7 +7,6 @@
 
     <include package="plone.app.portlets" />
     <include package="plone.app.registry" />
-    <include package="collective.autopermission" />
     <include package="collective.monkeypatcher" />
 
 
@@ -26,33 +25,16 @@
         />
 
 
-    <!-- permissions -->
-    <permission
-        id="collective.mrwiggin.ManageLayout"
-        title="collective.mrwiggin: Manage Layout"
-        />
 
-
-    <!-- manage layout interface -->
-    <browser:resource
-        name="mrwiggin.manage_layout.css"
-        file="manage_layout.css"
+    <!-- -->
+    <browser:resourceDirectory
+        name="mrwiggin"
+        directory="static"
         />
-    <browser:resource
-        name="mrwiggin.manage_layout.js"
-        file="manage_layout.js"
-        />
-    <browser:page
-        for="plone.portlets.interfaces.ILocalPortletAssignable"
-        class=".manage_layout.ManageLayout"
-        name="manage_layout"
-        permission="collective.mrwiggin.ManageLayout"
-        />
-
 
     <!-- portlet managers editors -->
     <adapter
-        factory=".editmanager.LayoutEditManager"
+        factory=".editmanager.ColumnEditManager"
         provides="plone.portlets.interfaces.IPortletManagerRenderer"
         />
     <adapter
@@ -63,9 +45,30 @@
         for="plone.portlets.interfaces.ILocalPortletAssignable"
         name="editmanager_macros"
         template="editmanager_macros.pt"
-        permission="collective.mrwiggin.ManageLayout"
+        permission="plone.app.portlets.ManagePortlets"
         />
    
+
+    <!-- Register import and export steps -->
+    <!--adapter
+        factory=".exportimport.PortletsXMLAdapter"
+        name="mrwiggin"
+        />
+    <genericsetup:importStep
+        name="mrwiggin"
+        title="Mr. Wiggin Stuff"
+        description="Import Mr. Wiggin"
+        handler=".exportimport.importPortlets">
+            <depends name="componentregistry"/>
+            <depends name="content"/>
+    </genericsetup:importStep>
+
+    <genericsetup:exportStep
+        name="mrwiggin"
+        title="Mr. Wiggin Stuff"
+        description="Export Mr. Wiggin"
+        handler=".exportimport.exportPortlets"
+        /-->
 
     <genericsetup:registerProfile
         name="default"

@@ -4,23 +4,22 @@ from zope.component import adapts, getMultiAdapter, queryMultiAdapter
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from plone.portlets.utils import hashPortletInfo
 from plone.portlets.interfaces import IPortletRenderer
-from plone.app.portlets.browser.editmanager import EditPortletManagerRenderer
+from plone.portlets.interfaces import IPortletAssignmentSettings
+from plone.app.portlets.browser.editmanager import ContextualEditPortletManagerRenderer 
+from plone.app.portlets.browser.interfaces import IManageContextualPortletsView
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
-from collective.mrwiggin.interfaces import IManageLayoutView
-from collective.mrwiggin.interfaces import IBlockManager
+from collective.mrwiggin.interfaces import IColumn
 from collective.mrwiggin.interfaces import IRow
 
 
-class LayoutEditManager(EditPortletManagerRenderer):
+class LayoutEditManager(ContextualEditPortletManagerRenderer):
     """Render a portlet manager in edit mode for the layout 
     """
     
-    adapts(Interface, IDefaultBrowserLayer, IManageLayoutView, IBlockManager)
     template = ViewPageTemplateFile('editmanager.pt')
-
 
     def portlets_for_assignments(self, assignments, manager, base_url):
         category = self.__parent__.category
@@ -45,6 +44,7 @@ class LayoutEditManager(EditPortletManagerRenderer):
                 dict(manager=manager.__name__, category=category,
                      key=key, name=name,))
             
+            settings = IPortletAssignmentSettings(assignments[idx])
             renderer = getMultiAdapter(
                         (self.context, self.request, view,
                             manager, assignments[idx]),
@@ -58,6 +58,9 @@ class LayoutEditManager(EditPortletManagerRenderer):
                 'up_url'     : '%s/@@move-portlet-up?name=%s' % (base_url, name),
                 'down_url'   : '%s/@@move-portlet-down?name=%s' % (base_url, name),
                 'delete_url' : '%s/@@delete-portlet?name=%s' % (base_url, name),
+                'hide_url'   : '%s/@@toggle-visibility?name=%s' % (base_url, name),
+                'show_url'   : '%s/@@toggle-visibility?name=%s' % (base_url, name),
+                'visible'    : settings.get('visible', True),
                 })
         if len(data) > 0:
             data[0]['up_url'] = data[-1]['down_url'] = None
@@ -75,11 +78,18 @@ class LayoutEditManager(EditPortletManagerRenderer):
             return self.error_message()
 
 
+class ColumnEditManager(LayoutEditManager):
+    """Render a portlet manager in edit mode for the rows 
+    """
+    
+    adapts(Interface, IDefaultBrowserLayer, IManageContextualPortletsView, IColumn)
+    template = ViewPageTemplateFile('editmanager_column.pt')
+
 class RowEditManager(LayoutEditManager):
     """Render a portlet manager in edit mode for the rows 
     """
     
-    adapts(Interface, IDefaultBrowserLayer, IManageLayoutView, IRow)
+    adapts(Interface, IDefaultBrowserLayer, IManageContextualPortletsView, IRow)
     template = ViewPageTemplateFile('editmanager_row.pt')
 
 
