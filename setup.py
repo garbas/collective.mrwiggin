@@ -23,7 +23,6 @@ setup(name='collective.mrwiggin',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'collective.autopermission',
           'plone.app.portlets',
           'z3c.form==1.9',
           'plone.app.registry',
