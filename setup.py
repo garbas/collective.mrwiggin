@@ -24,9 +24,10 @@ setup(name='collective.mrwiggin',
       install_requires=[
           'setuptools',
           'plone.app.portlets',
-          'z3c.form==1.9',
           'plone.app.registry',
+          'plone.app.jquerytools',
           'collective.monkeypatcher',
+          'z3c.form==1.9',
       ],
       entry_points="""
       # -*- Entry points: -*-

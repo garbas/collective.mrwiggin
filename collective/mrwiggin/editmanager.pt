@@ -1,15 +1,21 @@
-<div class="portlets-manager mrwiggin"
+
+<div class="portlets-manager-rendered"
+     tal:attributes="rel string:#portletmanager-${view/normalized_manager_name};">
+    <div metal:use-macro="context/@@editmanager_macros/macros/rendered-portlets" />
+</div>
+<div class="portlets-manager"
      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-     tal:attributes="id string:portletmanager-${view/normalized_manager_name};">
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:metal="http://xml.zope.org/namespaces/metal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     tal:attributes="id string:portletmanager-${view/normalized_manager_name};"
+     i18n:domain="plone">
 
   <div metal:use-macro="context/@@manage-portlets-macros/macros/portlet-add-form" />
 
   <div metal:use-macro="context/@@manage-portlets-macros/macros/current-portlets-list" />
 
-  <div class="portletAssignments">
+  <div class="portletAssignments2">
 
     <h4 i18n:translate="heading_un_block_portlets">
         Block/unblock portlets
@@ -181,5 +187,5 @@
 
     </form>
   </div>
-
 </div>
+

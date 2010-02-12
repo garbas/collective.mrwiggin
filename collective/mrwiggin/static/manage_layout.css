@@ -1,15 +1,55 @@
 
+.portlets-manager-rendered {
+  cursor: pointer;
+  background: #fff;
+  -moz-box-shadow:0 0 90px 5px #000; 
+  -webkit-box-shadow: 0 0 90px #000; 
+}
+.portlets-manager {
+  display: none;
+  z-index: 10000; 
+  background-color:#666; 
+  width:675px;     
+  min-height:200px; 
+  border:5px solid #333; 
+  padding: 1em;
+  -moz-box-shadow:0 0 90px 5px #000; 
+  -webkit-box-shadow: 0 0 90px #000; 
+}
+.portlets-manager .close {
+    background-image:url(++resource++mrwiggin/close.png); 
+    position:absolute; 
+    right:-15px; 
+    top:-15px; 
+    cursor:pointer; 
+    height:35px; 
+    width:35px; 
+}
 
 
 
+
+
+
+
+/*
 .mrwiggin_row {
   width: 100% !important;
 }
+.mrwiggin_row  .portlet {
+  float: left;
+}
+
 .mrwiggin_column {
   height: 100% !important;
 }
 .mrwiggin {
   min-height: 1em;
+  border: 1px solid transparent !important;
+  position: relative;
+}
+.mrwiggin:hover {
+  border: 1px solid red !important;
 }
 .mrwiggin .portlets_actions {
   display: none;
@@ -66,7 +106,6 @@ dl.portlet,
 .managedPortlet {
   margin-bottom:0 !important;
 }
-
 /*.mrwiggin_row .portlet_add,
 .mrwiggin_row .portletHeader,
 .mrwiggin_row .managedPortlet {

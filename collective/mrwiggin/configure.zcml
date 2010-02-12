@@ -7,10 +7,11 @@
 
     <include package="plone.app.portlets" />
     <include package="plone.app.registry" />
+    <include package="plone.app.jquerytools" />
     <include package="collective.monkeypatcher" />
 
 
-    <!-- main layout "engine" -->
+    <!-- layout "engine" -->
     <monkey:patch
         description="Make main_template a BrowserView class"
         class="OFS.Traversable.Traversable"
@@ -22,31 +23,26 @@
         name="main_template"
         class=".main_layout.MainLayout"
         permission="zope2.View"
-        layer=".interfaces.IMrWigginLayer"
         />
 
-    <!-- -->
+    <!-- portlets manager advanced UI -->
+    <adapter
+        factory=".editmanager.LayoutEditPortletManager"
+        provides="plone.portlets.interfaces.IPortletManagerRenderer"
+        />
+
     <browser:resourceDirectory
         name="mrwiggin"
         directory="static"
+        layer=".interfaces.IMrWigginLayer"
         />
     <browser:page
-        for="plone.portlets.interfaces.ILocalPortletAssignable"
         name="manage-portlets"
+        for="plone.portlets.interfaces.ILocalPortletAssignable"
         class="plone.app.portlets.browser.manage.ManageContextualPortlets"
         permission="plone.app.portlets.ManagePortlets"
         template="manage_portlets.pt"
         layer=".interfaces.IMrWigginLayer"
-        />
-
-    <!-- portlet managers editors -->
-    <adapter
-        factory=".editmanager.ColumnEditManager"
-        provides="plone.portlets.interfaces.IPortletManagerRenderer"
-        />
-    <adapter
-        factory=".editmanager.RowEditManager"
-        provides="plone.portlets.interfaces.IPortletManagerRenderer"
         />
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"

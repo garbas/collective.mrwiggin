@@ -70,7 +70,6 @@
 </div>
 
 <div metal:define-macro="blocking-portlets" class="portletAssignments"
-     tal:attributes="id string:portletmanager-${view/normalized_manager_name};"
      i18n:domain="plone">
 
     <h4 i18n:translate="heading_un_block_portlets">

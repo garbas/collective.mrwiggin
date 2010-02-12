@@ -1,26 +1,24 @@
-var tmp;
-jq(document).ready(function() {
-  jq('.mrwiggin').mouseover(function(){
-    tmp = jq(this).find('.portlets_actions');
-    tmp.css('display', 'block');
-  });
-  jq('.mrwiggin').mouseleave(function(){
-    tmp = jq(this).find('.portlets_actions');
-    tmp.css('display', 'none');
-  });
-  jq('.mrwiggin .portlets_actions').mouseleave(function(){
-    this.css('display', 'none');
-  });
+var expose_options = {
+  lazy:true,
+  color: '#78c',
+  opacity: 0.5,
+  api: true }
 
-  jq('.mrwiggin .button_add').click(function(){
-    tmp = jq(this.parentNode).find('ul');
-    if (tmp.css('display') == 'block') {
-      tmp.css('display', 'none');
-    } else {
-      tmp.css('display', 'block');
-    }
-  });
-  jq('.mrwiggin .button_close').click(function(){
-    jq(this.parentNode.parentNode.parentNode.parentNode).css('display', 'none');
+var overlay_options = {
+  top: 100, 
+  expose: {
+    loadSpeed: 200
+  }, 
+  closeOnClick: false, 
+  api: true }
+
+
+jq(document).ready(function() {
+  jq('.portlets-manager-rendered').each(function() {
+    jq(this).expose(expose_options).load();
+    jq(this).click(function() {
+      jq(jq(this).attr('rel')).overlay(overlay_options).load();
+      return false;
+    });
   });
 });

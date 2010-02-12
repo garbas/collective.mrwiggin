@@ -1,27 +1,31 @@
 
+from ZODB.POSException import ConflictError
 from zope.interface import implements, Interface
 from zope.component import adapts, getMultiAdapter, queryMultiAdapter
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from plone.portlets.utils import hashPortletInfo
 from plone.portlets.interfaces import IPortletRenderer
 from plone.portlets.interfaces import IPortletAssignmentSettings
-from plone.app.portlets.browser.editmanager import ContextualEditPortletManagerRenderer 
+from plone.app.portlets.browser.editmanager import ContextualEditPortletManagerRenderer
 from plone.app.portlets.browser.interfaces import IManageContextualPortletsView
+from plone.app.portlets.browser.manage import ManageContextualPortlets as BaseManageContextualPortlets
 from plone.memoize.instance import memoize
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
-from collective.mrwiggin.interfaces import IColumn
-from collective.mrwiggin.interfaces import IRow
+from collective.mrwiggin.interfaces import IMrWigginLayer
+from plone.portlets.interfaces import IPortletManager
 
 
-class LayoutEditManager(ContextualEditPortletManagerRenderer):
+class LayoutEditPortletManager(ContextualEditPortletManagerRenderer):
     """Render a portlet manager in edit mode for the layout 
     """
     
+    adapts(Interface, IMrWigginLayer, IManageContextualPortletsView, IPortletManager)
     template = ViewPageTemplateFile('editmanager.pt')
 
+# possible optimisation
 #    @memoize
 #    def portlets(self):
 #        return super(LayoutEditManager, self).portlets()
@@ -78,23 +82,5 @@ class LayoutEditManager(ContextualEditPortletManagerRenderer):
         except ConflictError:
             raise
         except Exception:
-            log.exception('Error while rendering %r' % (self,))
-            aq_acquire(self, 'error_log').raising(sys.exc_info())
-            return self.error_message()
-
-
-class ColumnEditManager(LayoutEditManager):
-    """Render a portlet manager in edit mode for the rows 
-    """
-    
-    adapts(Interface, IDefaultBrowserLayer, IManageContextualPortletsView, IColumn)
-    template = ViewPageTemplateFile('editmanager_column.pt')
-
-class RowEditManager(LayoutEditManager):
-    """Render a portlet manager in edit mode for the rows 
-    """
-    
-    adapts(Interface, IDefaultBrowserLayer, IManageContextualPortletsView, IRow)
-    template = ViewPageTemplateFile('editmanager_row.pt')
-
+            return 'Error while rendering %r' % (self,)
 
