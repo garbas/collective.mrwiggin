@@ -5,7 +5,8 @@
   -moz-box-shadow:0 0 90px 5px #000; 
   -webkit-box-shadow: 0 0 90px #000; 
 }
-.portlets-manager {
+.portlets-manager,
+.portlets-manager-addform {
   display: none;
   z-index: 10000; 
   background-color:#666; 
@@ -16,14 +17,15 @@
   -moz-box-shadow:0 0 90px 5px #000; 
   -webkit-box-shadow: 0 0 90px #000; 
 }
-.portlets-manager .close {
-    background-image:url(++resource++mrwiggin/close.png); 
-    position:absolute; 
-    right:-15px; 
-    top:-15px; 
-    cursor:pointer; 
-    height:35px; 
-    width:35px; 
+.portlets-manager .close,
+.portlets-manager-addform .close {
+  background-image:url(++resource++mrwiggin/close.png); 
+  position:absolute; 
+  right:-15px; 
+  top:-15px; 
+  cursor:pointer; 
+  height:35px; 
+  width:35px; 
 }
 
 

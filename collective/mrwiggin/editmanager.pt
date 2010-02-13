@@ -1,8 +1,11 @@
-
 <div class="portlets-manager-rendered"
-     tal:attributes="rel string:#portletmanager-${view/normalized_manager_name};">
+     tal:attributes="rel string:#portletmanager-${view/normalized_manager_name};
+                     id string:portletmanager-renderer-${view/normalized_manager_name};">
+    <!-- split point (i know its dumbt to do like this) -->
     <div metal:use-macro="context/@@editmanager_macros/macros/rendered-portlets" />
+    <!-- split point (i know its dumbt to do like this) -->
 </div>
+<div class="portlets-manager-addform" ></div>
 <div class="portlets-manager"
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:tal="http://xml.zope.org/namespaces/tal"
@@ -13,9 +16,13 @@
 
   <div metal:use-macro="context/@@manage-portlets-macros/macros/portlet-add-form" />
 
-  <div metal:use-macro="context/@@manage-portlets-macros/macros/current-portlets-list" />
+  <div class="portletAssignmentsList">
+    <!-- split point (i know its dumbt to do like this) -->
+    <div metal:use-macro="context/@@manage-portlets-macros/macros/current-portlets-list" />
+    <!-- split point (i know its dumbt to do like this) -->
+  </div>
 
-  <div class="portletAssignments2">
+  <div class="portletAssignments">
 
     <h4 i18n:translate="heading_un_block_portlets">
         Block/unblock portlets

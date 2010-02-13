@@ -30,6 +30,39 @@
         factory=".editmanager.LayoutEditPortletManager"
         provides="plone.portlets.interfaces.IPortletManagerRenderer"
         />
+    <!-- KSS actions -->
+    <browser:page
+        for="*"
+        name="inlineMovePortletUp"
+        class=".kss.PortletManagerKSS"
+        attribute="move_portlet_up"
+        permission="plone.app.portlets.ManageOwnPortlets"
+        layer=".interfaces.IMrWigginLayer"
+        />
+    <browser:page
+        for="*"
+        name="inlineMovePortletDown"
+        class=".kss.PortletManagerKSS"
+        attribute="move_portlet_down"
+        permission="plone.app.portlets.ManageOwnPortlets"
+        layer=".interfaces.IMrWigginLayer"
+        />
+    <browser:page
+        for="*"
+        name="inlineDeletePortlet"
+        class=".kss.PortletManagerKSS"
+        attribute="delete_portlet"
+        permission="plone.app.portlets.ManageOwnPortlets"
+        layer=".interfaces.IMrWigginLayer"
+        />
+    <browser:page
+        for="*"
+        name="togglePortletVisibility"
+        class=".kss.PortletManagerKSS"
+        attribute="toggle_visibility"
+        permission="plone.app.portlets.ManageOwnPortlets"
+        layer=".interfaces.IMrWigginLayer"
+        />
 
     <browser:resourceDirectory
         name="mrwiggin"

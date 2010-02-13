@@ -1,5 +1,7 @@
 var expose_options = {
-  lazy:true,
+  lazy: true,
+  closeOnClick: false,
+  closeOnEsc: false,
   color: '#78c',
   opacity: 0.5,
   api: true }
@@ -9,7 +11,6 @@ var overlay_options = {
   expose: {
     loadSpeed: 200
   }, 
-  closeOnClick: false, 
   api: true }
 
 
