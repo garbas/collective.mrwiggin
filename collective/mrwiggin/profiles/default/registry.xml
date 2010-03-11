@@ -13,7 +13,7 @@
             </value_type>
         </field>
         <value>
-            <element key="collective.mrwiggin.mainlayout">collective.mrwiggin:main_layout.pt</element>
+            <element key="collective.mrwiggin.mainlayout">Products.CMFPlone:skins/plone_templates/main_template.pt</element>
         </value>
     </record>
 

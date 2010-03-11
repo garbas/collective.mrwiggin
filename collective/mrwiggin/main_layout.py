@@ -34,12 +34,13 @@ class MainLayout(BrowserView):
             layouts = registry.records.get('collective.mrwiggin.layouts', None)
             if layouts is not None and \
                layout_name is not None and \
-               layout_name != 'collective.mrwiggin.mainlayout' and \
                layout_name in layouts.value.keys():
                return ViewPageTemplateFile(
                         self.resolve_layout_path(
                                 layouts.value[layout_name]))
-        return ViewPageTemplateFile('main_layout.pt')
+        return ViewPageTemplateFile(
+                        self.resolve_layout_path(
+                                'Products.CMFPlone:skins/plone_templates/main_template.pt'))
     
     @property
     def index(self):
