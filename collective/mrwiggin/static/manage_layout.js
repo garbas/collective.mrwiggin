@@ -9,8 +9,10 @@ var expose_options = {
 var overlay_options = {
   top: 100, 
   expose: {
-    loadSpeed: 200
+    loadSpeed: 100
   }, 
+  oneInstance: false,  
+  closeOnClick: false, 
   api: true }
 
 
