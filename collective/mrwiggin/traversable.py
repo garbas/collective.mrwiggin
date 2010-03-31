@@ -1,5 +1,7 @@
 
 from urllib import quote
+from Acquisition import aq_acquire
+from Acquisition.interfaces import IAcquirer
 
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
@@ -265,6 +267,8 @@ def patched_unrestrictedTraverse(self, path, default=_marker, restricted=False):
                     continue
 
             bobo_traverse = getattr(obj, '__bobo_traverse__', None)
+            #if name == 'Members':
+            #    import pdb; pdb.set_trace()
             try:
                 if name == 'main_template':
                     raise NotFound(name+', with the BrowserView hook')
