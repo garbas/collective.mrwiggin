@@ -23,10 +23,8 @@ class MainLayout(BrowserView):
                 # and then check for each record in registry
                 portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
                 t = self.context.absolute_url()[len(portal_state.portal_url()):].split('/')
-                for path in reversed(
-                        ['/'+os.path.join(*[str(t[j])
-                                for j in range(t.index(i)+1)])
-                                        for i in t]):
+                tt = ['/'+os.path.join(*[str(t[j]) for j in range(t.index(i)+1)]) for i in t]
+                for path in reversed(tt):
                     layout_name = assigments.value.get(path, None)
                     if layout_name is not None:
                         break
@@ -35,9 +33,8 @@ class MainLayout(BrowserView):
             if layouts is not None and \
                layout_name is not None and \
                layout_name in layouts.value.keys():
-               return ViewPageTemplateFile(
-                        self.resolve_layout_path(
-                                layouts.value[layout_name]))
+                layout_path = self.resolve_layout_path(layouts.value[layout_name])
+                return ViewPageTemplateFile(layout_path)
         return ViewPageTemplateFile(
                         self.resolve_layout_path(
                                 'Products.CMFPlone:skins/plone_templates/main_template.pt'))
