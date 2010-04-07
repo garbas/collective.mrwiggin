@@ -1,10 +1,11 @@
-
 <div metal:define-macro="rendered-portlets" i18n:domain="plone">
-    <tal:block repeat="portlet view/portlets">
-        <tal:block replace="structure python:view.safe_render(portlet['renderer'])"
-                   condition="portlet/visible"/>
+    <tal:block condition="view/portletsToShow"
+               repeat="portlet view/portletsToShow">
+    <div tal:attributes="id string:portletwrapper-${portlet/hash};
+                         class string:portletWrapper kssattr-portlethash-${portlet/hash};"
+         tal:content="structure python:view.safe_render(portlet['renderer'])" />
     </tal:block>
-    <tal:block condition="not:view/portlets">
+    <tal:block condition="not:view/portletsToShow">
       No portlets assigned!
     </tal:block>
 </div>

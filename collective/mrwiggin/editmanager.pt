@@ -5,7 +5,6 @@
     <div metal:use-macro="context/@@editmanager_macros/macros/rendered-portlets" />
     <!-- split point (i know its dumbt to do like this) -->
 </div>
-<div class="portlets-manager-addform" ></div>
 <div class="portlets-manager"
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:tal="http://xml.zope.org/namespaces/tal"
