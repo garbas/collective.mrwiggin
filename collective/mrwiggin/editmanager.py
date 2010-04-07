@@ -1,4 +1,5 @@
 
+from zope.interface import Interface
 from zope.component import adapts
 from plone.portlets.interfaces import IPortletManager
 from plone.app.portlets.browser.interfaces import IManageContextualPortletsView
