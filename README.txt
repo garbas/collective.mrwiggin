@@ -1,5 +1,6 @@
 .. contents::
 
+
 **Mr. Tid (Graham):** 
 Now, gentlemen, we have two basic suggestions for the architectural design of
 this residential block, and I thought it better that the architects themselves
@@ -23,12 +24,25 @@ you with easy plugin methods you can use to define new layouts now with Plone
 3.x and later. [so you dont have to wait for Deco :P /me hides]
 
 
+Important
+=========
+
+This is alpha release of mrwiggin. Documentation as well screencast in on its
+way so please come back when package gets to out of alpha or proceed with
+reading the code.
+
+
 Detailed documentation
 ======================
 
 still to come ... but please feel free to kick my butt if i forget to fill this
 space with some useful info.
 
+ToDo
+====
+
+ * also try regex expessions when comparing page to url. this would for example
+   provide that only edit paged will have different layouts.
 
 Changelog
 =========
@@ -43,7 +57,7 @@ Changelog
 Authors
 =======
 
- * `Rok Garbas` aka garbas
+ * `Rok Garbas` - garbas
 
 
 
