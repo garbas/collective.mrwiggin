@@ -19,7 +19,7 @@
 }
 .portlets-manager .close,
 .portlets-manager-addform .close {
-  background-image:url(++resource++mrwiggin/close.png); 
+  background:transparent url(++resource++mrwiggin/close.png) no-repeat right top; 
   position:absolute; 
   right:-15px; 
   top:-15px; 
